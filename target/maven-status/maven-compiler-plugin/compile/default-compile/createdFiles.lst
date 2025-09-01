@@ -1,0 +1,5 @@
+com\example\astonhibernate\entity\UserEntity.class
+com\example\astonhibernate\hibernate\HibernateUtil.class
+com\example\astonhibernate\hibernate\UserCLI.class
+com\example\astonhibernate\dao\UserDao.class
+com\example\astonhibernate\Main.class
