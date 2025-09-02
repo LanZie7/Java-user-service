@@ -3,8 +3,8 @@ package com.example.astonhibernate.service;
 import com.example.astonhibernate.dao.UserDao;
 import com.example.astonhibernate.entity.UserEntity;
 
-
 import java.util.List;
+
 
 public class UserService {
     private final UserDao userDao;
