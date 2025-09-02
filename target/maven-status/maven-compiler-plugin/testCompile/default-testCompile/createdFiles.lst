@@ -1,0 +1,4 @@
+com\example\astonhibernate\dao\UserDaoTest.class
+com\example\astonhibernate\dao\UserDaoIntegrationTest.class
+com\example\astonhibernate\service\UserService.class
+com\example\astonhibernate\service\UserServiceTest.class
