@@ -3,18 +3,33 @@ package com.example.astonhibernate.dao;
 import com.example.astonhibernate.hibernate.HibernateUtil;
 import com.example.astonhibernate.entity.UserEntity;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
 import java.util.List;
+
 
 public class UserDao {
 
     private static final Logger logger = LogManager.getLogger(UserDao.class);
+    private SessionFactory sessionFactory;
+
+    // Конструктор по умолчанию для Mockito
+    public UserDao() {
+        this.sessionFactory = HibernateUtil.getSessionFactory();
+    }
+
+    // Конструктор для тестов
+    public UserDao(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
 
     public void saveUser(UserEntity user) {
         Transaction transaction = null;
-        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+//        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+        try (Session session = sessionFactory.openSession()) {
             transaction = session.beginTransaction();
             session.persist(user);
             transaction.commit();
@@ -78,7 +93,7 @@ public class UserDao {
             transaction.commit();
         } catch (Exception e) {
             if (transaction != null) transaction.rollback();
-            logger.error("Ошибка удаления пользователя с  ID {}: {}", id, e.getMessage(), e);
+            logger.error("Ошибка удаления пользователя с ID {}: {}", id, e.getMessage(), e);
         }
     }
 }
